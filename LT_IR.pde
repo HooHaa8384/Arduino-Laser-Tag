@@ -12,8 +12,6 @@ int IR_BIT = 1<<1;
 void sendShot(int team)
 {
   byte data [] = {HEADER, FUNC_SHOT, team, NULL};
-
-  
   sendPacket(data);
 }
 
@@ -23,6 +21,10 @@ void sendPacket(byte data [])
    {   
       int i = 0;
       
+      for(int k=0; data[k] != NULL;k++)
+      {
+        Serial.println(int(data[k]));
+      }
       turnIROn(PACKET_HEADER);
       
       while (NULL != data[i])
@@ -63,6 +65,7 @@ void send0()
 void send1()
 {
    turnIROn(BIT_HEADER);
+   delayMicroseconds(BIT_1);
 }
 
 void turnIROn(int t)

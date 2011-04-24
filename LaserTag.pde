@@ -1,8 +1,8 @@
 int motorPin1 = 6;
 int motorPin2 = 7;
-int irPin = 9;
 int irSensor = 8;
 
+int IR_PIN = 9;
 int TRIGGER_PIN = 3;
 int SPEAKER_PIN = 4;
 const int RED_PIN = 11;
@@ -25,9 +25,11 @@ void setup()
   pinMode(SPEAKER_PIN, OUTPUT);
   pinMode(YELLOW_PIN, OUTPUT);
   pinMode(RED_PIN, OUTPUT);
+  pinMode(IR_PIN, OUTPUT);
   pinMode(TRIGGER_PIN, INPUT);
   
   digitalWrite(YELLOW_PIN, HIGH);
+  mTeam = YELLOW;
   
   Serial.begin(9600);
 }
@@ -46,11 +48,11 @@ void loop()
     FIRE = true;
     
     playShot(SPEAKER_PIN);
-    /*delay(500);
+    delay(500);
     playDeactivate(SPEAKER_PIN);
     delay(500);
     playActivate(SPEAKER_PIN);
-    */
+    
     
     sendShot(mTeam);
     
